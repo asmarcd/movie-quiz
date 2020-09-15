@@ -1,3 +1,27 @@
-body {
-    background-color: lightblue
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title{
+    margin: 5%;
+    text-align:center;
+}
+
+.hslink{
+    float: left;
+}
+
+.timer{
+    text-align: right;
+}
+
+.intro{
+    margin: 5%;
+    text-align: center;
+}
+
+.selectors{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
