@@ -20,8 +20,22 @@
     text-align: center;
 }
 
-.selectors{
+.goButton {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.question{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center
+}
+
+.visible{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center
 }

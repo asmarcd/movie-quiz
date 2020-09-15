@@ -8,11 +8,14 @@
 </head>
 
 <body>
+    <!-- Header includes the title of the quiz, the high scores button, and the timer -->
     <header>
         <button class=hslink>High Scores</button>
-        <p class = timer>Timer: 60</p>
+        <p class=timer>Timer: 60</p>
         <h1 class=title>Movie Quiz Challenge!</h1>
     </header>
+
+    <!-- This section includes the instructions and disappears once the player clicks Go!-->
     <section class=text>
         <p class=intro>
             Get ready! Time to test your movie knowledge.
@@ -25,11 +28,63 @@
             <br>
             Test yourself against your friends and record your high scores!
         </p>
-        <h2 class = questions></h2>
     </section>
-    <section class=selectors>
+    <section class=goButton>
         <button class=go>Go!</button>
     </section>
+
+    <!-- These sections are the individual questions asked of the player. With each answer, the curent question is removed from the page and the next one is displayed.-->
+    <section id=q1 class=question>
+        <article>
+            <p>Which now famous director made their acting debut in 1999's "Mystery Men" with the line, "Can we bring the brewskies?"</p>
+            <button>Joss Whedon</button>
+            <button id = correct1>Michael Bay</button>
+            <button>Patty Jenkins</button>
+            <button>Brett "The Rat" Ratner</button>
+        </article>
+    </section>
+    <section class=question>
+        <article id=q2>
+            <p>Insert Question here</p>
+            <button>Button 1</button>
+            <button>Button 2</button>
+            <button>Button 3</button>
+            <button>Button 4</button>
+        </article>
+    </section>
+    <section class=question>
+        <article id=q3>
+            <p>Insert Question here</p>
+            <button>Button 1</button>
+            <button>Button 2</button>
+            <button>Button 3</button>
+            <button>Button 4</button>
+        </article>
+    </section>
+    <section class=question>
+        <article id=q4>
+            <p>Insert Question here</p>
+            <button>Button 1</button>
+            <button>Button 2</button>
+            <button>Button 3</button>
+            <button>Button 4</button>
+        </article>
+    </section>
+    <section class=question>
+        <article id=q5>
+            <p>Insert Question here</p>
+            <button>Button 1</button>
+            <button>Button 2</button>
+            <button>Button 3</button>
+            <button>Button 4</button>
+        </article>
+    </section>
+
+    <!-- This is the form for the player to input their initials. It appears only when the game is over. -->
+
+    <!-- This is the high score display -->
+
+
     <script src="script.js"></script>
 </body>
 
