@@ -1,0 +1,97 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header includes the title of the quiz, the high scores button, and the timer -->
+    <header>
+        <button class=hslink>High Scores</button>
+        <p class=timer>Timer: 60</p>
+        <h1 class=title>Movie Quiz Challenge!</h1>
+    </header>
+
+    <!-- This section includes the instructions and disappears once the player clicks Go!-->
+    <section class=text>
+        <p class=intro>
+            Get ready! Time to test your movie knowledge.
+            <br>
+            You have one minute to answer as many questions correctly as you can.
+            <br>
+            Guess right and you get points!
+            <br>
+            Guess wrong and you'll lose time.
+            <br>
+            Test yourself against your friends and record your high scores!
+        </p>
+    </section>
+    <section class= "goButton">
+        <button id="go">Go!</button>
+    </section>
+
+    <!-- These sections are the individual questions asked of the player. With each answer, the curent question is removed from the page and the next one is displayed.-->
+    <section id=q1 class=question>
+        <article>
+            <p>Which now famous director made their acting debut in 1999's "Mystery Men" with the line, "Can we bring the brewskies?"</p>
+            <button class = q1a>Joss Whedon</button>
+            <button class = q1a>Michael Bay</button>
+            <button class = q1a>Patty Jenkins</button>
+            <button class = q1a>Brett "The Rat" Ratner</button>
+        </article>
+    </section>
+    <section id=q2 class=question>
+        <article>
+            <p>Insert Question 2</p>
+            <button class = q2a>Button 1</button>
+            <button class = q2a>Button 2</button>
+            <button class = q2a>Button 3</button>
+            <button class = q2a>Button 4</button>
+        </article>
+    </section>
+    <section id=q3 class=question>
+        <article>
+            <p>Insert Question 3</p>
+            <button class = q3a>Button 1</button>
+            <button class = q3a>Button 2</button>
+            <button class = q3a>Button 3</button>
+            <button class = q3a>Button 4</button>
+        </article>
+    </section>
+    <section id=q4 class=question>
+        <article>
+            <p>Insert Question 4</p>
+            <button class = q4a>Button 1</button>
+            <button class = q4a>Button 2</button>
+            <button class = q4a>Button 3</button>
+            <button class = q4a>Button 4</button>
+        </article>
+    </section>
+    <section id=q5 class=question>
+        <article>
+            <p>Insert Question 5</p>
+            <button class = q5a>Button 1</button>
+            <button class = q5a>Button 2</button>
+            <button class = q5a>Button 3</button>
+            <button class = q5a>Button 4</button>
+        </article>
+    </section>
+
+    <!-- This is the form for the player to input their initials. It appears only when the game is over. -->
+
+    <!-- This is the high score display -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+<!-- fun stuff to do if you have time -->
+
+<!-- Insert a random movie quote at the bottom if you have time -->
+<!-- Change background based on how much time is remaining -->

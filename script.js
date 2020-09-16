@@ -1,117 +1,125 @@
-// Global variables
-const goButton = document.querySelector(".go");
-const title = document.querySelector(".title");
-const intro = document.querySelector(".intro");
-const timer = document.querySelector(".timer");
-const questionsAll = document.querySelectorAll(".question");
-const question1 = document.querySelector("#q1");
-const question2 = document.querySelector("#q2");
-const question3 = document.querySelector("#q3");
-const question4 = document.querySelector("#q4");
-const question5 = document.querySelector("#q5");
-let secondsLeft = 60;
-
-// When you want to replace the HTML questions with an array, do it by finishing this. each questions will be myQuestions[i] when you're trying to pull them later:
-const myQuestions = [
+// Questions:
+const trivia = [
     {
         question: "Which now famous director made their acting debut in 1999's 'Mystery Men' with the line, 'Can we bring the brewskies?'",
         a1: "Joss Whedon",
         a2: "Michael Bay",
         a3: "Patty Jenkins",
-        a4: "Bret 'The Rat' Ratner"
+        a4: "Brett 'The Rat' Ratner"
     },
-
     {
-        question: "",
-        a1: "",
-        a2: "",
-        a3: "",
-        a4: "",
+        question: "In 'The Sandlot, the team faces off against a huge dog that they call The Beast. What's The Beast's real name?",
+        a1: "Hercules",
+        a2: "Zeus",
+        a3: "Babe",
+        a4: "Cujo",
     },
-]
+    {
+        question: "Who was the only actor to receive an Oscar nomination for acting in a Lord of the Rings movie?",
+        a1: "Viggo Mortensen",
+        a2: "Elijah Wood",
+        a3: "Sean Bean",
+        a4: "Ian McKellen",
+    },
+    {
+        question: "In When Harry Met Sally, which household item do the titular characters’ friends have an argument about?",
+        a1: "A Lamp",
+        a2: "A Microwave",
+        a3: "A Coffee Table",
+        a4: "A Loveseat",
+    },
+    {
+        question: "In which blockbuster starring Nic Cage and John Travolta do the two main characters take each others faces...off?",
+        a1: "Face/Off",
+        a2: "Con Air",
+        a3: "The Rock",
+        a4: "Saturday Night Fever",
+    },
+];
 
+// Global Variables:
+let title = $('#title');
+let goBtn = $('#goBtn');
+let text = $('#text');
+let timer = $('#timer');
+let qBox = $('#question-box');
+let question = $('#question');
+let ansButton = $('.ansButton')
+let ans1 = $('#a1');
+let ans2 = $('#a2');
+let ans3 = $('#a3');
+let ans4 = $('#a4');
+let userABC = $('#userABC-box');
+let submitBtn = $('#submit');
 
+let triviaIndex = 0;
+let points = 0;
+let secondsLeft = 60;
 
-// Process of working through questions
-goButton.addEventListener("click", function () {
-    quizStart();
-    askQuestionOne();
-});
-
-question1.addEventListener("click", function (event) {
-    if (event.target.matches(".q1a")) {
-        askQuestionTwo();
-    }
-});
-question2.addEventListener("click", function (event) {
-    if (event.target.matches(".q2a")) {
-        askQuestionThree();
-    }
-});
-question3.addEventListener("click", function (event) {
-    if (event.target.matches(".q3a")) {
-        askQuestionFour();
-    }
-});
-question4.addEventListener("click", function (event) {
-    if (event.target.matches(".q4a")) {
-        askQuestionFive();
-    }
-});
-question5.addEventListener("click", function (event) {
-    if (event.target.matches(".q5a")) {
-        // insert function for moving to end screen, but without time's up message
-    }
-});
-
-// Functions
-function quizStart() {
-    title.textContent = "";
-    intro.textContent = "";
-    goButton.style.display = "none";
+// Starting game after pressing go
+goBtn.click(function () {
+    title.text("");
+    text.text('');
+    goBtn.css("display", "none");
 
     let countdown = setInterval(function () {
         secondsLeft--;
-        timer.textContent = `Timer: ${secondsLeft}`
+        timer.text(`Timer: ${secondsLeft}`);
 
         if (secondsLeft === 0) {
-            gameOver();
+            endGame();
             clearInterval(countdown);
-        }
-    }, 1000);
+        };
+
+        if (triviaIndex === trivia.length) {
+            clearInterval(countdown);
+        };
+
+    }, 100);
+
+    qBox.css("display", "block");
+    question.text(trivia[triviaIndex].question);
+    ans1.text(trivia[triviaIndex].a1)
+    ans2.text(trivia[triviaIndex].a2)
+    ans3.text(trivia[triviaIndex].a3)
+    ans4.text(trivia[triviaIndex].a4)
+});
+
+ansButton.click(() => {
+    nextQuestion();
+});
+
+submitBtn.click(() => {
+    userABC.css("display", "none");
+});
+
+
+
+
+
+
+// Functions:
+function nextQuestion() {
+    triviaIndex++
+
+    if (triviaIndex === trivia.length) {
+        endGame();
+    };
+
+    question.text(trivia[triviaIndex].question);
+    ans1.text(trivia[triviaIndex].a1);
+    ans2.text(trivia[triviaIndex].a2);
+    ans3.text(trivia[triviaIndex].a3);
+    ans4.text(trivia[triviaIndex].a4);
 };
 
+function endGame() {
+    qBox.css("display", "none");
+    userABC.css("display", "block");
+    title.text(`You earned ${points} points!`);
+}
 
-// Is there a way to combine these into a single function with a loop?
-function askQuestionOne() {
-    question1.setAttribute("class", "visible");
-};
-function askQuestionTwo() {
-    question1.setAttribute("class", "question");
-    question2.setAttribute("class", "visible");
-};
-function askQuestionThree() {
-    question2.setAttribute("class", "question");
-    question3.setAttribute("class", "visible");
-};
-function askQuestionFour() {
-    question3.setAttribute("class", "question");
-    question4.setAttribute("class", "visible");
-};
-function askQuestionFive() {
-    question4.setAttribute("class", "question");
-    question5.setAttribute("class", "visible");
-};
-
-
-
-function gameOver() {
-    questionsAll.textContent = "";
-    title.textContent = "Time's up!";
-
-};
-
-
+// Pick up tomorrow - figure out how to make questions get designated as correct or incorrect. Figure out how to make a box pop up accordingly. Do that and you'll basically be there.
 
 // When a question is answered correctly, move to next question
 // When a question is answered correctly: show "Correct!" on page below next question based on answer

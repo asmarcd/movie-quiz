@@ -1,0 +1,41 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title{
+    margin: 5%;
+    text-align:center;
+}
+
+.hslink{
+    float: left;
+}
+
+.timer{
+    text-align: right;
+}
+
+.intro{
+    margin: 5%;
+    text-align: center;
+}
+
+.goButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center
+}
+
+.visible{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center
+}
