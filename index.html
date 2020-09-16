@@ -10,7 +10,7 @@
 <body>
     <header>
         <button id = "hsLink">High Scores</button>
-        <p id = "timer">Timer: 60</p>
+        <p id = "timer">Timer: 30</p>
         <h1 id = "title">Movie Quiz Challenge!</h1>
     </header>
 
@@ -18,7 +18,7 @@
     <p id = "text">
         Get ready! Time to test your movie knowledge.
         <br>
-        You have one minute to answer as many questions correctly as you can.
+        You have 30 seconds to answer as many questions correctly as you can.
         <br>
         Guess right and you get points!
         <br>
@@ -38,15 +38,16 @@
     </article>
     <article id = "userABC-box" class = "modal">
         <div class = "userABC-content">
+            <p>Good work!</p>
             <p>Enter your intials here:</p>
-            <input type="text">
+            <input placeholder = "Your Initials" type="text" id = "userABC">
             <button id = "submit">Submit</button>
         </div>
     </article>
     <article id = "answer-popup"></article>
     <article id = "scores-box">
         <div>
-            
+            <h2>High Scores:</h2>
         </div>
     </article>
 </section>
