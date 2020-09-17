@@ -55,16 +55,22 @@ let ans2 = $('#a2');
 let ans3 = $('#a3');
 let ans4 = $('#a4');
 let userABCBox = $('#userABC-box');
-let userABC = $('#userABC')
 let submitBtn = $('#submit');
 let answerPopUp = $('#answer-popup');
 let scoresBox = $('#scores-box');
+let scoreDisplay = $("#score-display");
+let hsBtn = $('#hsLink')
 
 let triviaIndex = 0;
 let points = 0;
 let secondsLeft = 30;
+let initials = "";
 
-let highScores = {};
+let playerScores = [];
+let player = {
+    initials: initials,
+    score: points
+};
 
 // -------------------------------------------------
 // Starting game after pressing go
@@ -77,9 +83,10 @@ goBtn.click(function () {
         secondsLeft--;
         timer.text(`Timer: ${secondsLeft}`);
 
-        if (secondsLeft === 0) {
+        if (secondsLeft <= 0) {
             endGame();
             clearInterval(countdown);
+            timer.text(`Timer: 0`);
         };
 
         if (triviaIndex === trivia.length) {
@@ -97,34 +104,41 @@ goBtn.click(function () {
 });
 
 // Progressing the game as you click through
-ansButton.click((event) => {
+ansButton.click(function (event) {
     if (event.target.id == trivia[triviaIndex].correctAns) {
-        console.log('correct');
         points += 5;
         answerPopUp.html("<h2>Correct!</h2>");
         answerPopUp.css("display", "block");
-        hideAnswer();
     } else {
-        console.log("wrong")
         secondsLeft -= 10;
         answerPopUp.html("<h2>Wrong :(</h2>");
         answerPopUp.css("display", "block");
-        hideAnswer();
     };
+    hideAnswer();
     nextQuestion();
 });
 
-submitBtn.click(() => {
+submitBtn.click(function (event) {
+    event.preventDefault();
     userABCBox.css("display", "none");
-    console.log(points);
-    console.log(userABC.value);
+    player.initials = $('#userABC').val();
+    player.score = points;
 
-    highScores.score = points;
-    highScores.initials = userABC.value;
-    console.log(highScores);
+    playerScores.push(player);
+    localStorage.setItem("Player Score", JSON.stringify(playerScores));
+
+    scoreSave();
 });
 
-
+hsBtn.click(function (event){
+    qBox.css("display", "none");
+    answerPopUp.css("display", "none");
+    userABCBox.css("display", "none");
+    goBtn.css("display", "none");
+    scoresBox.css("display", "block");
+    title.text("");
+    text.text('');
+})
 
 // -------------------------------------------------
 // Functions:
@@ -149,7 +163,7 @@ function endGame() {
     title.text(`You earned ${points} points!`);
     scoresBox.css("display", "block");
 
-}
+};
 
 function hideAnswer() {
     setTimeout(function () {
@@ -157,10 +171,36 @@ function hideAnswer() {
     }, 500)
 };
 
-// Why is userABC.value continuing to show up as undefined? Can't figure it out.
+let localStorageData = JSON.parse(localStorage.getItem("Player Score"));
+
+function scoreSave() {
+
+    const divScores = $('<div></div>');
+    scoreDisplay.append(divScores);
+
+    localStorageData.forEach(function (player) {
+        let pTag = $("<p></p>");
+        pTag.text(`${player.initials} - ${player.score}`);
+        divScores.prepend(pTag);
+    })
+};
+
+function loadLocalStorage() {
+    playerScores.push(localStorageData);
+};
+
+if (localStorageData != null) {
+    loadLocalStorage();
+};
 
 // When the game ends, record the users' score and associate it via object with their intials
 
 // When initials and score are inputted, also save to local storage
 
 // When high score button is clicked, display high scores from local storage
+
+// log local storage on load both parsed and unparsed.
+
+// comment out platerscores.push and see how things change.
+// log in foreach loop, the localstorage
+// step through each function, log each step, and see at what point the data values start to dupe.
