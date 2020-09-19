@@ -11,5 +11,5 @@ An initial incomplete attempt was put aside and refactored, but I have included 
 https://asmarcd.github.io/movie-quiz/
 
 # Screenshot of site:
-Screenshot 2020-09-16 213404.png
+<img src = "Screenshot 2020-09-16 213404.png" alt = "Quiz home page">
 
